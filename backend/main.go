@@ -6,6 +6,7 @@ import (
 	"nebula/consts"
 	"nebula/controller"
 	model_cmdb "nebula/model/cmdb"
+	model_keycloak "nebula/model/keycloak"
 	model_setting "nebula/model/setting"
 	model_system "nebula/model/system"
 	_ "nebula/service"
@@ -46,6 +47,12 @@ func main() {
 	router.RegisterList[*model_setting.Project](setting, "project")
 	router.RegisterList[*model_setting.Vendor](setting, "vendor")
 	router.RegisterList[*model_setting.Region](setting, "region")
+
+	keycloak := router.API().Group("keycloak")
+	router.RegisterList[*model_keycloak.User](keycloak, "user")
+	router.RegisterList[*model_keycloak.Client](keycloak, "client")
+	router.RegisterList[*model_keycloak.Group](keycloak, "group")
+	router.RegisterList[*model_keycloak.Realm](keycloak, "realm")
 
 	util.RunOrDie(bootstrap.Run)
 }
