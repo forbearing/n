@@ -57,7 +57,7 @@ import (
 type Group struct {
 	// 常用索引字段
 	Name    string `json:"name"`
-	Path    string `json:"path" gorm:"uniqueIndex"` // 保留这个因为 Path 必须唯一
+	Path    string `json:"path"` // 保留这个因为 Path 必须唯一
 	RealmID string `json:"realm_id"`
 
 	// 层级关系字段

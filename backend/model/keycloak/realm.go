@@ -7,9 +7,9 @@ import (
 
 // Realm 数据库模型 - 简化版本
 type Realm struct {
-	Name        string `json:"name" gorm:"index"`
-	DisplayName string `json:"display_name" gorm:"index"`
-	Enabled     bool   `json:"enabled" gorm:"index"`
+	Name        *string `json:"name" gorm:"index"`
+	DisplayName *string `json:"display_name" gorm:"index"`
+	Enabled     *bool   `json:"enabled" gorm:"index"`
 
 	// 完整的 Realm 配置存储在 JSON 字段中
 	Data datatypes.JSON `gorm:"type:json"`

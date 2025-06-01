@@ -5,6 +5,7 @@ import (
 
 	"nebula/consts"
 	"nebula/controller"
+	"nebula/cronjob"
 	model_cmdb "nebula/model/cmdb"
 	model_keycloak "nebula/model/keycloak"
 	model_setting "nebula/model/setting"
@@ -31,6 +32,7 @@ func main() {
 	// logger environment
 	os.Setenv(config.LOGGER_DIR, "/tmp/nebula/logs")
 
+	bootstrap.Register(cronjob.Init)
 	util.RunOrDie(bootstrap.Bootstrap)
 
 	router.API().GET("/column/:id", controller.Column.Get)
