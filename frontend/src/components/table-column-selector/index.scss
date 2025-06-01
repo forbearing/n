@@ -1,0 +1,12 @@
+.asset-platform .ant-tree-switcher {
+  width: 0; // 把 switcher 的宽度设置为0(默认15), 要不然很难看
+}
+
+// 调整 Tree 组件每一行之间的间距, 默认 padding 是 '0 0 4px 0'
+.asset-platform .ant-tree-treenode {
+  padding: 0;
+}
+
+// .ant-tree-treenode.ant-tree-treenode-switcher-close.ant-tree-treenode-checkbox-checked.ant-tree-treenode-draggable {
+//     padding: 0;
+// }
