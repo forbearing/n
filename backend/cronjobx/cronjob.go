@@ -1,12 +1,14 @@
-package cronjob
+package cronjobx
 
 import (
 	"context"
 	"encoding/json"
 
+	"nebula/configx"
 	model_keycloak "nebula/model/keycloak"
 
 	"github.com/Nerzal/gocloak/v13"
+	"github.com/forbearing/golib/config"
 	"github.com/forbearing/golib/cronjob"
 	"github.com/forbearing/golib/database"
 	"github.com/forbearing/golib/model"
@@ -17,7 +19,7 @@ import (
 
 func Init() error {
 	cronjob.Register(func() error {
-		admin := gocloak.NewClient("http://localhost:8001")
+		admin := gocloak.NewClient(config.Get[configx.Keycloak](configx.KEYCLOAK).Addr)
 		ctx := context.Background()
 		token, err := admin.LoginAdmin(ctx, "admin", "admin", "master")
 		if err != nil {

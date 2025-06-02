@@ -3,9 +3,10 @@ package main
 import (
 	"os"
 
+	"nebula/configx"
 	"nebula/consts"
 	"nebula/controller"
-	"nebula/cronjob"
+	"nebula/cronjobx"
 	model_cmdb "nebula/model/cmdb"
 	model_keycloak "nebula/model/keycloak"
 	model_setting "nebula/model/setting"
@@ -31,8 +32,13 @@ func main() {
 	os.Setenv(config.MYSQL_PASSWORD, consts.MYSQL_PASSWORD)
 	// logger environment
 	os.Setenv(config.LOGGER_DIR, "/tmp/nebula/logs")
+	// keycloak environment
+	os.Setenv(configx.KEYCLOAK_ADDR, "http://localhost:8003")
 
-	bootstrap.Register(cronjob.Init)
+	bootstrap.Register(
+		configx.Init,
+		cronjobx.Init,
+	)
 	util.RunOrDie(bootstrap.Bootstrap)
 
 	router.API().GET("/column/:id", controller.Column.Get)
