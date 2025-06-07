@@ -81,17 +81,24 @@ func RegisterKeycloak() {
 			for _, u := range _users {
 				data, _ := json.Marshal(r)
 				newUsers = append(newUsers, &model_keycloak.User{
-					Base:      model.Base{ID: util.Deref(u.ID)},
-					Username:  u.Username,
-					RealmId:   r.ID,
-					RealmName: r.Realm,
-					Data:      datatypes.JSON(data),
+					Base:          model.Base{ID: util.Deref(u.ID)},
+					Username:      u.Username,
+					Email:         u.Email,
+					Enabled:       u.Enabled,
+					EmailVerified: u.EmailVerified,
+					FirstName:     u.FirstName,
+					LastName:      u.LastName,
+					RealmId:       r.ID,
+					RealmName:     r.Realm,
+					Data:          datatypes.JSON(data),
 				})
 			}
 			for _, g := range _groups {
 				data, _ := json.Marshal(r)
 				newGroups = append(newGroups, &model_keycloak.Group{
 					Base:      model.Base{ID: util.Deref(g.ID)},
+					Name:      g.Name,
+					Path:      g.Path,
 					RealmId:   r.ID,
 					RealmName: r.Realm,
 					Data:      datatypes.JSON(data),

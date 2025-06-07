@@ -56,9 +56,8 @@ import (
 
 type Group struct {
 	// 常用索引字段
-	Name    string `json:"name"`
-	Path    string `json:"path"` // 保留这个因为 Path 必须唯一
-	RealmID string `json:"realm_id"`
+	Name *string `json:"name"`
+	Path *string `json:"path"` // 保留这个因为 Path 必须唯一
 
 	// 层级关系字段
 	ParentID string `json:"parent_id"`
@@ -68,7 +67,7 @@ type Group struct {
 	RealmName *string `json:"realm_name,omitempty"`
 
 	// 完整的 Group 配置存储在 JSON 字段中
-	Data datatypes.JSON `json:"data"`
+	Data datatypes.JSON `json:"data,omitempty"`
 
 	model.Base
 }

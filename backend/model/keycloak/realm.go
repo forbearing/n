@@ -12,7 +12,7 @@ type Realm struct {
 	Enabled     *bool   `json:"enabled" gorm:"index"`
 
 	// 完整的 Realm 配置存储在 JSON 字段中
-	Data datatypes.JSON `gorm:"type:json"`
+	Data datatypes.JSON `json:"data,omitempty"`
 
 	model.Base
 }

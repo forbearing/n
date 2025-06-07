@@ -33,7 +33,7 @@ type Client struct {
 	RealmName *string `json:"realm_name,omitempty"`
 
 	// 完整的 Client 配置存储在 JSON 字段中
-	Data datatypes.JSON `json:"data"`
+	Data datatypes.JSON `json:"data,omitempty"`
 
 	model.Base
 }

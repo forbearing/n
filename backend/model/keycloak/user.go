@@ -7,18 +7,18 @@ import (
 
 type User struct {
 	// 常用索引字段
-	Username      *string `json:"username"`
-	Email         *string `json:"email"`
-	Enabled       *bool   `json:"enabled"`
-	EmailVerified *bool   `json:"email_verified"`
-	FirstName     *string `json:"first_name"`
-	LastName      string  `json:"last_name"`
+	Username      *string `json:"username,omitempty"`
+	Email         *string `json:"email,omitempty"`
+	Enabled       *bool   `json:"enabled,omitempty"`
+	EmailVerified *bool   `json:"email_verified,omitempty"`
+	FirstName     *string `json:"first_name,omitempty"`
+	LastName      *string `json:"last_name,omitempty"`
 
 	RealmId   *string `json:"realm_id,omitempty"`
 	RealmName *string `json:"realm_name,omitempty"`
 
 	// 完整的 User 配置存储在 JSON 字段中
-	Data datatypes.JSON `json:"data"`
+	Data datatypes.JSON `json:"data,omitempty"`
 
 	model.Base
 }
