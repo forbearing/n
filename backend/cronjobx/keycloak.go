@@ -73,6 +73,7 @@ func RegisterKeycloak() {
 				newClients = append(newClients, &model_keycloak.Client{
 					Base:      model.Base{ID: util.Deref(c.ID)},
 					Name:      c.Name,
+					Enabled:   c.Enabled,
 					RealmId:   r.ID,
 					RealmName: r.Realm,
 					Data:      datatypes.JSON(data),
