@@ -64,6 +64,9 @@ type Group struct {
 	ParentID string `json:"parent_id"`
 	Level    int    `json:"level"` // 层级深度，便于查询
 
+	RealmId   *string `json:"realm_id,omitempty"`
+	RealmName *string `json:"realm_name,omitempty"`
+
 	// 完整的 Group 配置存储在 JSON 字段中
 	Data datatypes.JSON `json:"data"`
 

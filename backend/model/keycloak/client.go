@@ -29,6 +29,9 @@ type Client struct {
 	StandardFlowEnabled          *bool   `json:"standard_flow_enabled,omitempty"`
 	SurrogateAuthRequired        *bool   `json:"surrogate_auth_required,omitempty"`
 
+	RealmId   *string `json:"realm_id,omitempty"`
+	RealmName *string `json:"realm_name,omitempty"`
+
 	// 完整的 Client 配置存储在 JSON 字段中
 	Data datatypes.JSON `json:"data"`
 

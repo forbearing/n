@@ -68,26 +68,33 @@ func RegisterKeycloak() {
 			if _groups, err = admin.GetGroups(ctx, token.AccessToken, util.Deref(r.Realm), gocloak.GetGroupsParams{Max: util.ValueOf(-1)}); err != nil {
 				return err
 			}
-			for _, r := range _clients {
+			for _, c := range _clients {
 				data, _ := json.Marshal(r)
 				newClients = append(newClients, &model_keycloak.Client{
-					Base: model.Base{ID: util.Deref(r.ID)},
-					Name: r.Name,
-					Data: datatypes.JSON(data),
+					Base:      model.Base{ID: util.Deref(c.ID)},
+					Name:      c.Name,
+					RealmId:   r.ID,
+					RealmName: r.Realm,
+					Data:      datatypes.JSON(data),
 				})
 			}
-			for _, r := range _users {
+			for _, u := range _users {
 				data, _ := json.Marshal(r)
 				newUsers = append(newUsers, &model_keycloak.User{
-					Base: model.Base{ID: util.Deref(r.ID)},
-					Data: datatypes.JSON(data),
+					Base:      model.Base{ID: util.Deref(u.ID)},
+					Username:  u.Username,
+					RealmId:   r.ID,
+					RealmName: r.Realm,
+					Data:      datatypes.JSON(data),
 				})
 			}
-			for _, r := range _groups {
+			for _, g := range _groups {
 				data, _ := json.Marshal(r)
 				newGroups = append(newGroups, &model_keycloak.Group{
-					Base: model.Base{ID: util.Deref(r.ID)},
-					Data: datatypes.JSON(data),
+					Base:      model.Base{ID: util.Deref(g.ID)},
+					RealmId:   r.ID,
+					RealmName: r.Realm,
+					Data:      datatypes.JSON(data),
 				})
 			}
 		}

@@ -7,18 +7,15 @@ import (
 
 type User struct {
 	// 常用索引字段
-	Username      string `json:"username"`
-	Email         string `json:"email"`
-	Enabled       bool   `json:"enabled"`
-	EmailVerified bool   `json:"email_verified"`
-	RealmID       string `json:"realm_id"`
+	Username      *string `json:"username"`
+	Email         *string `json:"email"`
+	Enabled       *bool   `json:"enabled"`
+	EmailVerified *bool   `json:"email_verified"`
+	FirstName     *string `json:"first_name"`
+	LastName      string  `json:"last_name"`
 
-	// 搜索和显示常用字段
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-
-	// 用于快速查询的时间戳
-	CreatedTimestamp int64 `json:"created_timestamp"`
+	RealmId   *string `json:"realm_id,omitempty"`
+	RealmName *string `json:"realm_name,omitempty"`
 
 	// 完整的 User 配置存储在 JSON 字段中
 	Data datatypes.JSON `json:"data"`
