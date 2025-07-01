@@ -1,4 +1,4 @@
-package consts
+package constx
 
 // WARN: remove in production environment.
 const (
